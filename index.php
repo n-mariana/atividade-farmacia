@@ -1,31 +1,72 @@
 <?php 
-  require_once 'config/conexao.php'; // Puxa o banco
-  require_once 'includes/header.php'; // Puxa o topo visual
+require_once 'config/conexao.php';
+require_once 'includes/header.php';
 ?>
 
-<h2>Bem-vindo ao Gerenciador de Estoque da Farmácia</h2>
-<p>Aqui você pode gerenciar os produtos de forma rápida.</p>
+<link rel="stylesheet" href="style.css">
 
-<?php 
-    $sql = "SELECT * FROM produtos ORDER BY id ASC";
-    $stmt = $conexao->prepare($sql);
-    $stmt->execute();
-    $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo "<h2>Lista de Produtos</h2>";
+<div class="container" align="center">
 
-    if($produtos){
-        foreach ($produtos as $registro){
-            echo "ID: " . $registro['id'] . " | ";
-            echo "Nome: " . $registro['nome'] . " | ";
-            echo "Fabricante: " . $registro['fabricante'] . " | ";
-            echo "Preço: " . $registro['preco'] . " | ";
-            echo "Estoque: " . $registro['estoque']  . "<br>";
-            echo "------------------------------------------------------------------------------------------------------<br>";
+    <h1>Gerenciador de Estoque da Farmácia</h1>
+
+    <p>
+        Aqui você pode gerenciar os produtos de forma rápida e organizada.
+    </p>
+
+    <?php 
+        $sql = "SELECT * FROM produtos ORDER BY id ASC";
+        $stmt = $conexao->prepare($sql);
+        $stmt->execute();
+
+        $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        echo "<h2>Lista de Produtos</h2>";
+
+        if($produtos){
+    ?>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Fabricante</th>
+                <th>Preço</th>
+                <th>Estoque</th>
+            </tr>
+
+            <?php
+                foreach($produtos as $registro){
+            ?>
+
+            <tr>
+                <td><?php echo $registro['id']; ?></td>
+
+                <td><?php echo $registro['nome']; ?></td>
+
+                <td><?php echo $registro['fabricante']; ?></td>
+
+                <td class="preco">
+                    R$ <?php echo number_format($registro['preco'], 2, ',', '.'); ?>
+                </td>
+
+                <td><?php echo $registro['estoque']; ?></td>
+            </tr>
+
+            <?php
+                }
+            ?>
+
+        </table>
+
+    <?php
+        } else {
+            echo "<div class='sem-produto'>
+                    A lista de produtos está vazia.
+                  </div>";
         }
-    }
-    
-    else{
-    echo "A lista de produtos está vazia.";
-    }
-    require_once 'includes/footer.php'; // Puxa o final do site
-?>
+
+        require_once 'includes/footer.php';
+    ?>
+
+</div>
