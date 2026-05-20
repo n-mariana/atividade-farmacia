@@ -1,6 +1,6 @@
 <?php 
-  require 'config/conexao.php'; // Puxa o banco
-  require 'includes/header.php'; // Puxa o topo visual
+  require_once 'config/conexao.php'; // Puxa o banco
+  require_once 'includes/header.php'; // Puxa o topo visual
 ?>
 
 <h2>Bem-vindo ao Gerenciador de Estoque da Farmácia</h2>
@@ -27,5 +27,5 @@
     else{
     echo "A lista de produtos está vazia.";
     }
-    require 'includes/footer.php'; // Puxa o final do site
+    require_once 'includes/footer.php'; // Puxa o final do site
 ?>
