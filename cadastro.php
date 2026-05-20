@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             (:nome, :fabricante, :preco, :estoque)";
 
     // Preparar SQL
-    $stmt = $pdo->prepare($sql);
+    $stmt = $conexao->prepare($sql);
 
     // Executar
     $stmt->execute([

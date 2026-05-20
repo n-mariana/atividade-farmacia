@@ -3,8 +3,8 @@
   require 'includes/header.php'; // Puxa o topo visual
 ?>
 
-<h2>Bem-vindo à Agenda</h2>
-<p>Aqui você pode gerenciar seus contatos de forma rápida.</p>
+<h2>Bem-vindo ao Gerenciador de Estoque da Farmácia</h2>
+<p>Aqui você pode gerenciar os produtos de forma rápida.</p>
 
 <?php 
     $sql = "SELECT * FROM produtos ORDER BY id ASC";
@@ -20,7 +20,7 @@
             echo "Fabricante: " . $registro['fabricante'] . " | ";
             echo "Preço: " . $registro['preco'] . " | ";
             echo "Estoque: " . $registro['estoque']  . "<br>";
-            echo "------------------------------<br>";
+            echo "------------------------------------------------------------------------------------------------------<br>";
         }
     }
     

@@ -1,45 +1,87 @@
 <?php
-// 1. Conexão
-    $dsn = "mysql:host=localhost;dbname=database;charset=utf8";
-    $usuario = "root";
-    $senha = "";
-    
-    // Conexão com o Banco de Dados
-    try {
-        // Criamos o objeto PDO
-        $pdo = new PDO($dsn, $usuario, $senha);
-    } catch (PDOException $e) { //Apenas será executado se acontecer algum erro
-        die("Erro ao conectar: " . $e->getMessage());
-    }
 
-// Dados que queremos atualizar
-$idParaAlterar = 4;
-$novoNome = "Carlos Alberto (Etec)";
-$novoNumero = "11 98888-7777";
+require_once 'config/conexao.php';
+require_once 'includes/header.php';
+
+// Verifica se o formulário foi enviado
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    // Recebendo dados
+    $id = $_POST['id'];
+    $nome = $_POST['nome'];
+    $fabricante = $_POST['fabricante'];
+    $preco = $_POST['preco'];
+    $estoque = $_POST['estoque'];
 
 // 2. PREPARAR (UPDATE): 
 // Usamos "SET" para definir os novos valores onde o ID for igual ao selecionado
-$sql = "UPDATE produtos SET nome = :novo_nome, numero = :novo_num WHERE id = :id";
-$stmt = $pdo->prepare($sql);
+    $sql = "UPDATE produtos
+            SET
+                nome = :nome,
+                fabricante = :fabricante,
+                preco = :preco,
+                estoque = :estoque
+            WHERE id = :id";
+    $stmt = $conexao->prepare($sql);
 
 // 3. EXECUTAR:
-// Vinculamos os valores aos apelidos (:novo_nome, :novo_num, :id)
-$sucesso = $stmt->execute([
-    ':novo_nome' => $novoNome,
-    ':novo_num'  => $novoNumero,
-    ':id'         => $idParaAlterar
-]);
+// Vinculamos os valores aos apelidos 
+    $sucesso = $stmt->execute([
+        ':nome' => $nome,
+        ':fabricante' => $fabricante,
+        ':preco' => $preco,
+        ':estoque' => $estoque,
+        ':id' => $id
+    ]);
 
 // 4. FEEDBACK:
 // É importante avisar ao usuário se deu certo
-if ($sucesso) {
-    // rowCount() conta quantas linhas foram afetadas no banco
-    if ($stmt->rowCount() > 0) {
-        echo "Sucesso! O contato ID $idParaAlterar foi atualizado.";
+    if ($sucesso) {
+
+        if ($stmt->rowCount() > 0) {
+            echo "Sucesso! O produto ID $id foi atualizado.";
+        } else {
+            echo "O comando funcionou, mas os dados eram iguais ou o ID não existe.";
+        }
+
     } else {
-        echo "O comando funcionou, mas os dados eram iguais ou o ID não existe.";
+        echo "Erro ao atualizar produto.";
     }
-} else {
-    echo "Erro ao tentar atualizar.";
 }
+
+?>
+
+<!-- Form -->
+<h2>Editar Produto</h2>
+
+<form action="editar.php" method="POST">
+
+    <label>ID do Produto:</label><br>
+    <input type="number" name="id" required>
+    <br><br>
+
+    <label>Novo Nome:</label><br>
+    <input type="text" name="nome" required>
+    <br><br>
+
+    <label>Novo Fabricante:</label><br>
+    <input type="text" name="fabricante" required>
+    <br><br>
+
+    <label>Novo Preço:</label><br>
+    <input type="number" step="0.01" name="preco" required>
+    <br><br>
+
+    <label>Novo Estoque:</label><br>
+    <input type="number" name="estoque" required>
+    <br><br>
+
+    <button type="submit">Atualizar Produto</button>
+
+</form>
+
+<?php
+
+require_once 'includes/footer.php';
+
 ?>

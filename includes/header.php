@@ -3,7 +3,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Agenda Etec VAV</title>
+    <title>Gerenciador de Estoque</title>
     <style>
         body { font-family: Arial; background: #eee; }
         nav { background: #333; color: white; padding: 10px; }
@@ -14,6 +14,8 @@
     <nav>
         <strong>Etec VAV</strong>
         <a href="index.php">Início</a>
-        <a href="inserir.php">Novo Contato</a>
+        <a href="cadastro.php">Novo Registro</a>
+        <a href="editar.php">Editar Registro</a>
+        <a href="excluir.php">Excluir Registro</a>
     </nav>
     <hr>
