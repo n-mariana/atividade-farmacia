@@ -18,15 +18,25 @@ Projeto CRUD desenvolvido em PHP com PDO e MySQL para gerenciamento de estoque d
 ### 📂 Estrutura do Projeto
 
 ```bash
-config/
-includes/
-css/
-
-index.php
-cadastro.php
-editar.php
-excluir.php
-database.sql
+farmacia-vav/
+│
+├── config/
+│   └── conexao.php
+│
+├── includes/
+│   ├── header.php
+│   └── footer.php
+│
+├── css/
+│   └── style.css
+│
+├── index.php
+├── cadastro.php
+├── editar.php
+├── excluir.php
+│
+├── database.sql
+└── README.md
 ```
 
 ---
