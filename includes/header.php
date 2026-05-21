@@ -28,39 +28,59 @@
 
         nav{
             width: 100%;
+
             background-color: #223f8d;
+
             padding: 18px 20px;
 
             display: flex;
             flex-direction: column;
+
             align-items: center;
+
             gap: 18px;
 
-            box-shadow: 0px 3px 8px rgba(0,0,0,0.15);
+            box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
         }
+
+        /* LOGO */
 
         .logo{
             color: white;
+
             font-size: 24px;
+
             font-weight: bold;
+
             text-align: center;
+
+            line-height: 1.3;
         }
+
+        .vermelho{
+            color: #e62232;
+        }
+
+        /* MENU */
 
         .menu{
             width: 100%;
 
             display: flex;
             flex-direction: column;
+
             gap: 10px;
         }
 
         .menu a{
-            background-color: rgba(255,255,255,0.12);
+            background-color: rgba(255, 255, 255, 0.12);
 
             color: white;
+
             text-decoration: none;
 
             padding: 12px;
+
             border-radius: 8px;
 
             text-align: center;
@@ -82,7 +102,9 @@
 
             .menu{
                 flex-direction: row;
+
                 justify-content: center;
+
                 flex-wrap: wrap;
             }
 
@@ -98,6 +120,7 @@
 
             nav{
                 flex-direction: row;
+
                 justify-content: space-between;
             }
 
@@ -116,7 +139,15 @@
     <nav>
 
         <div class="logo">
-            Etec VAV
+
+            Farmácia
+
+            <br>
+
+            <span class="vermelho">
+                Etec VAV
+            </span>
+
         </div>
 
         <div class="menu">

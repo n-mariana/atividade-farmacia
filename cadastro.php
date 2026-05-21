@@ -3,13 +3,19 @@
 require_once 'config/conexao.php';
 require_once 'includes/header.php';
 
+// Variável da mensagem
+$mensagem = "";
+
 // Verifica se o formulário foi enviado
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Recebendo os dados do formulário
     $nome = $_POST['nome'];
+
     $fabricante = $_POST['fabricante'];
+
     $preco = $_POST['preco'];
+
     $estoque = $_POST['estoque'];
 
     // SQL de inserção
@@ -23,40 +29,199 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Executar
     $stmt->execute([
+
         ':nome' => $nome,
+
         ':fabricante' => $fabricante,
+
         ':preco' => $preco,
+
         ':estoque' => $estoque
+
     ]);
 
-    echo "<p>Produto cadastrado com sucesso!</p>";
+    // Mensagem de sucesso
+    $mensagem = "
+        <div style='
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #d4edda;
+            color: #155724;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 320px;
+        '>
+
+            Produto cadastrado com sucesso!
+
+        </div>
+    ";
+
 }
 
 ?>
 
-<h2>Cadastro de Produtos</h2>
+<div 
+    class="centralizar"
 
-<form action="cadastro.php" method="POST">
+    style="
+        width: 100%;
+        min-height: 70vh;
 
-    <label>Nome do Produto:</label><br>
-    <input type="text" name="nome" required>
-    <br><br>
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-    <label>Fabricante:</label><br>
-    <input type="text" name="fabricante" required>
-    <br><br>
+        padding: 40px 20px;
+    "
+>
 
-    <label>Preço:</label><br>
-    <input type="number" step="0.01" name="preco" required>
-    <br><br>
+    <div
+        style="
+            width: 100%;
+            max-width: 420px;
 
-    <label>Estoque:</label><br>
-    <input type="number" name="estoque" required>
-    <br><br>
+            background-color: white;
 
-    <button type="submit">Salvar Produto</button>
+            padding: 35px;
 
-</form>
+            border-radius: 12px;
+
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+
+            text-align: center;
+        "
+    >
+
+        <h2
+            style="
+                color: #223f8d;
+                margin-bottom: 30px;
+            "
+        >
+            Cadastro de Produtos
+        </h2>
+
+        <form action="cadastro.php" method="POST">
+
+            <label>
+                Nome do Produto:
+            </label>
+
+            <br><br>
+
+            <input 
+                type="text" 
+                name="nome" 
+                required
+
+                style="
+                    padding: 12px;
+                    width: 100%;
+                    border-radius: 6px;
+                    border: 1px solid #ccc;
+                "
+            >
+
+            <br><br>
+
+            <label>
+                Fabricante:
+            </label>
+
+            <br><br>
+
+            <input 
+                type="text" 
+                name="fabricante" 
+                required
+
+                style="
+                    padding: 12px;
+                    width: 100%;
+                    border-radius: 6px;
+                    border: 1px solid #ccc;
+                "
+            >
+
+            <br><br>
+
+            <label>
+                Preço:
+            </label>
+
+            <br><br>
+
+            <input 
+                type="number" 
+                step="0.01" 
+                name="preco" 
+                required
+
+                style="
+                    padding: 12px;
+                    width: 100%;
+                    border-radius: 6px;
+                    border: 1px solid #ccc;
+                "
+            >
+
+            <br><br>
+
+            <label>
+                Estoque:
+            </label>
+
+            <br><br>
+
+            <input 
+                type="number" 
+                name="estoque" 
+                required
+
+                style="
+                    padding: 12px;
+                    width: 100%;
+                    border-radius: 6px;
+                    border: 1px solid #ccc;
+                "
+            >
+
+            <br><br>
+
+            <button 
+                type="submit"
+
+                style="
+                    width: 100%;
+
+                    padding: 14px;
+
+                    background-color: #e62232;
+
+                    color: white;
+
+                    border: none;
+
+                    border-radius: 8px;
+
+                    cursor: pointer;
+
+                    font-size: 15px;
+                "
+            >
+                Salvar Produto
+            </button>
+
+        </form>
+
+        <!-- MENSAGEM -->
+
+        <?php echo $mensagem; ?>
+
+    </div>
+
+</div>
 
 <?php
 

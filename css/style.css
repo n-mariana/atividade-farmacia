@@ -10,12 +10,14 @@
 
 html,
 body{
-    height: 100%;
+    min-height: 100vh;
 }
 
 body{
     font-family: Arial, Helvetica, sans-serif;
+
     background-color: #f4f7f6;
+
     color: #333;
 
     display: flex;
@@ -26,7 +28,9 @@ body{
 
 .container{
     width: 95%;
+
     margin: 25px auto;
+
     background-color: white;
 
     padding: 20px;
@@ -40,7 +44,8 @@ body{
 
 /* TÍTULOS */
 
-h1, h2{
+h1,
+h2{
     color: #2e7d6b;
     margin-bottom: 15px;
 }
@@ -51,48 +56,78 @@ h1{
 
 h2{
     font-size: 22px;
+
+    margin-top: 45px;
 }
 
 p{
     margin-bottom: 20px;
+
     font-size: 15px;
+
     line-height: 1.5;
+}
+
+/* TABELA RESPONSIVA */
+
+.tabela-responsiva{
+    overflow-x: auto;
 }
 
 /* TABELA */
 
 table{
     width: 100%;
-    border-collapse: collapse;
 
     margin-top: 20px;
 
-    overflow-x: auto;
+    border-collapse: collapse;
 
-    display: block;
+    border: 2px solid #2e7d6b;
+
+    background-color: white;
 }
+
+/* CABEÇALHO */
 
 table th{
     background-color: #2e7d6b;
 
     color: white;
 
-    padding: 12px;
+    padding: 25px;
 
     text-align: center;
 
     font-size: 14px;
+
+    border: 2px solid white;
 }
+
+/* ID */
+
+table th:first-child{
+    background-color: #c0392b;
+}
+
+table td:first-child{
+    color: #c0392b;
+    font-weight: bold;
+}
+
+/* CÉLULAS */
 
 table td{
-    padding: 10px;
+    padding: 25px;
 
-    border-bottom: 1px solid #ddd;
+    border: 1px solid #ddd;
 
     text-align: center;
 
     font-size: 14px;
 }
+
+/* LINHAS */
 
 table tr:nth-child(even){
     background-color: #f1f1f1;
@@ -100,6 +135,7 @@ table tr:nth-child(even){
 
 table tr:hover{
     background-color: #dff3ee;
+
     transition: 0.3s;
 }
 
@@ -126,6 +162,13 @@ table tr:hover{
     text-align: center;
 }
 
+/* FOOTER */
+
+footer{
+    width: 100%;
+    margin-top: auto;
+}
+
 /* TABLET */
 
 @media(min-width: 768px){
@@ -145,10 +188,6 @@ table tr:hover{
 
     p{
         font-size: 16px;
-    }
-
-    table{
-        display: table;
     }
 
 }

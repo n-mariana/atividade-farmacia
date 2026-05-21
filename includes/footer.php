@@ -2,42 +2,49 @@
 
 <footer style="
     width: 100%;
+
     background-color: #223f8d;
     color: white;
 
-    padding: 30px 20px;
+    padding: 25px 15px;
 
     text-align: center;
 
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    margin-top: 40px;
 ">
 
     <h3 style="
-        margin-bottom: 10px;
-        font-size: 22px;
+        font-size: 20px;
+        margin-bottom: 12px;
+        line-height: 1.4;
     ">
         Farmácia • Sistema de Estoque
     </h3>
 
     <p style="
-        margin-bottom: 12px;
-        font-size: 15px;
+        font-size: 14px;
+        line-height: 1.6;
+
         color: #dfeee9;
-        line-height: 1.5;
+
+        margin-bottom: 15px;
     ">
-        Gerenciamento de produtos farmacêuticos de forma simples e organizada.
+        Gerenciamento de produtos farmacêuticos
+        de forma simples e organizada.
     </p>
 
     <span style="
-        font-size: 14px;
+        font-size: 13px;
+
         color: #cfe3dd;
-        line-height: 1.5;
+
+        line-height: 1.6;
+
         display: block;
     ">
-        &copy; 2026 - Desenvolvido pela Turma de Desenvolvimento de Sistemas
-        - Etec Vasco Antônio Venchiarutti
+        &copy; 2026 - Desenvolvido pela Turma de
+        Desenvolvimento de Sistemas -
+        Etec Vasco Antônio Venchiarutti
     </span>
 
 </footer>
